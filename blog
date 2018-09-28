@@ -1,0 +1,32 @@
+\q
+\du
+\dd
+\db
+\d
+?
+\\
+\?
+\l
+\?
+\l
+DROP DATEBASE support_db_new
+\?
+\l
+;
+DROP DATABASE support_db_new;
+\l
+\q
+\?
+\d
+\q
+\l
+\d
+\d users
+\q
+\l
+\d
+\c blog
+\dt
+\d users
+\q
+\s blog
