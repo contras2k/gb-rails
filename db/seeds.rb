@@ -5,3 +5,40 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Like.delete_all
+Comment.delete_all
+Post.delete_all
+User.delete_all
+
+hash_users = Array.new(10) do
+  {
+    name: FFaker::Internet.user_name[0...16],
+    email: FFaker::Internet.safe_email
+  }
+end
+users = User.create! hash_users
+
+users.first(7).each { |u| u.update creator: true }
+users.first(2).each { |u| u.update moderator: true }
+
+creators = User.where(creator: true)
+hash_posts = Array.new(20) do
+  {
+    title: FFaker::HipsterIpsum.phrase.first(80),
+    body: FFaker::HipsterIpsum.paragraphs,
+    user: creators.sample
+  }
+end
+posts = Post.create! hash_posts
+
+hash_commentaries = Array.new(200) do
+  commentable = (rand(2) == 1 ? posts : users).sample
+  {
+    body: FFaker::HipsterIpsum.paragraphs(2),
+    user: users.sample,
+    commentable_id: commentable.id,
+    commentable_type: commentable.class.to_s
+  }
+end
+Comment.create! hash_commentaries
