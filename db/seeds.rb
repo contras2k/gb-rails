@@ -27,7 +27,8 @@ hash_posts = Array.new(20) do
   {
     title: FFaker::HipsterIpsum.phrase.first(80),
     body: FFaker::HipsterIpsum.paragraphs,
-    user: creators.sample
+    user: creators.sample,
+    visible: (rand > 0.1)
   }
 end
 posts = Post.create! hash_posts
@@ -38,7 +39,8 @@ hash_commentaries = Array.new(200) do
     body: FFaker::HipsterIpsum.paragraphs(2),
     user: users.sample,
     commentable_id: commentable.id,
-    commentable_type: commentable.class.to_s
+    commentable_type: commentable.class.to_s,
+    visible: (rand > 0.1)
   }
 end
 Comment.create! hash_commentaries
