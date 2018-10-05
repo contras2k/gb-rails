@@ -21,6 +21,6 @@ p
         td: b = comm.user.name
         td = comm.body
 
-=> link_to 'Edit', edit_post_path(@post)
+=> link_to 'Edit', edit_post_path(@post), class: 'edit', id: 'edit'
 '|
 =< link_to 'Back', posts_path

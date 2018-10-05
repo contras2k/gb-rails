@@ -1,0 +1,35 @@
+tr {
+  vertical-align: top;
+}
+
+td > a, #new, #edit, #show {
+  color: #212121;
+  &:visited {
+    color: #212121;
+  }
+  &:hover {
+    color: #fff;
+    background-color: #000;
+  }
+  margin-top: 28px;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  padding: 0 10px 0;
+  text-decoration: none;
+  box-shadow: 0px 2px 4.85px 0.15px rgba(33, 33, 33, 0.35);
+  border-radius: 22px;
+  border: 1px solid transparent;
+}
+
+.show {
+  background-color: lightgreen;
+}
+
+.edit {
+  background-color: yellow;
+}
+
+.delete {
+  background-color: red;
+}

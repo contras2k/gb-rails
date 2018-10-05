@@ -17,9 +17,9 @@ p
   = @user.banned
 
 p
-  strong Leaved comments:
+  strong Leaved comments: 
   = @user.comments_count
 
-=> link_to 'Edit', edit_user_path(@user)
+=> link_to 'Edit', edit_user_path(@user), class: 'edit', id: 'edit'
 '|
 =< link_to 'Back', users_path

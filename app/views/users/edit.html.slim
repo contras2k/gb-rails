@@ -3,10 +3,10 @@ h1 Editing user
 == render 'form'
 
 p
-  strong Leaved comments:
+  strong Leaved comments: 
   = @user.comments_count
 
-=> link_to 'Show', @user
+=> link_to 'Show', @user, class: 'show', id: 'show'
 '|
 =< link_to 'Back', users_path
 
