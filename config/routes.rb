@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :users
+  get 'users/page/(:page(.:format))', to: 'users#index'
   resources :posts
   get 'posts/page/(:page(.:format))', to: 'posts#index'
 #  resources :posts, except: [:destroy]

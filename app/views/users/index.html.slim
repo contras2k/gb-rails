@@ -1,0 +1,24 @@
+h1 Listing users
+
+table
+  thead
+    tr
+      th Name
+      th Email
+      th Moderator
+      th Creator
+      th Banned
+      th Comments
+      th
+      th
+      th
+
+  tbody
+  = render partial: 'user', collection: @users
+
+br
+
+= link_to 'New User', new_user_path
+
+p
+  = paginate @users
