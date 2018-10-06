@@ -3,8 +3,7 @@ h1 Listing posts
 table
   thead
     tr
-      th Title
-      th Body
+      th
       th User
       th Visible
       th
@@ -15,7 +14,7 @@ table
     = render partial: 'post', collection: @posts
 br
 
-= link_to 'New Post', new_post_path
+= link_to 'New Post', new_post_path, class: 'show', id: 'new'
 
 p
   = paginate @posts

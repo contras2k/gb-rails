@@ -16,11 +16,14 @@ p
 p
   strong Comments:
   table
-    - @post.comments.order(:created_at).each do |comm|
+    - @comments.each do |comm|
       tr
         td: b = comm.user.name
         td = comm.body
 
-=> link_to 'Edit', edit_post_path(@post)
+p
+  = paginate @comments
+
+=> link_to 'Edit', edit_post_path(@post), class: 'edit', id: 'edit'
 '|
 =< link_to 'Back', posts_path
