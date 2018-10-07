@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :users
   get 'users/page/(:page(.:format))', to: 'users#index'
   resources :posts
