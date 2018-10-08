@@ -1,12 +1,27 @@
 header
-  ul
-    - if user_signed_in?
-      li
-        span = t('label.hello') % current_user.name
-      li
-        = link_to t('label.log_out'), destroy_user_session_path, method: :delete
-    - else
-      li
-        = link_to t('label.log_in'), new_user_session_path
-      li
-        = link_to t('label.registration'), new_user_registration_path
+  ul.menu
+    li
+      = link_to 'Домашняя', root_path
+    li
+      = link_to 'Заметки', posts_path
+    li
+      = link_to 'Пользователи', users_path
+
+    li.dropdown
+      button.dropbtn
+        - if user_signed_in?
+          = current_user.name
+        - else
+          | Guest
+
+      .dropdown-content
+        - if user_signed_in?
+          = link_to t('label.log_out'), destroy_user_session_path, method: :delete
+        - else
+          = link_to t('label.log_in'), new_user_session_path
+          = link_to t('label.registration'), new_user_registration_path
+
+p.notice
+  = notice
+p.alert
+  = alert
