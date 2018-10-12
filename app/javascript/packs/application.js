@@ -13,6 +13,7 @@ console.log('Hello World from Webpacker')
 // Rails.start();
 
 import "init"
+import "bootstrap"
 
 import Rails from 'rails-ujs';
 import Turbolinks from 'turbolinks';
