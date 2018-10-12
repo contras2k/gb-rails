@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable,
-         :omniauth_providers => [:google]
+         omniauth_providers: [:google_oauth2]
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :commented_posts, through: :comments, source: :commentable, source_type: :Post
@@ -14,11 +14,15 @@ class User < ApplicationRecord
   validates :name, uniqueness: true
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
+    # Either create a User record or update it based on the provider (Google) and the UID   
+    find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
       user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name
+      user.password = Devise.friendly_token
+      user.token = auth.credentials.token
+      user.expires = auth.credentials.expires
+      user.expires_at = auth.credentials.expires_at
+      user.refresh_token = auth.credentials.refresh_token
     end
   end
 
