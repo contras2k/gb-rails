@@ -46,11 +46,18 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
+# Урок 7
+gem 'webpacker'
+
+# Урок 8, деплой на heroku
+gem 'ffaker'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
-  gem 'ffaker'
+  ## gem 'ffaker'
   gem 'letter_opener'
 end
 
