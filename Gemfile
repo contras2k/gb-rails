@@ -45,8 +45,13 @@ gem 'slim-rails'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+
+# Урок 7
+gem 'webpacker'
+
 # Урок 8, деплой на heroku
 gem 'ffaker'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
